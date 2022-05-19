@@ -63,6 +63,6 @@ stages:
               appName: 'ReactSampleProject'
               deployToSlotOrASE: true
               resourceGroupName: 'DemoResourceGroup'
-              slotName: 'production'
-              package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              slotName: 'production'              
+              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
               runtimeStack: 'NODE|16-lts'
