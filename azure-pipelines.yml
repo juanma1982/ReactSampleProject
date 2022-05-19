@@ -12,7 +12,7 @@ variables:
   azureSubscription: '5b84c180-d7b9-4e06-80be-228bfd175dd1'
 
   # Web app name
-  webAppName: 'React Sample Project'
+  webAppName: 'ReactSampleProject'
 
   # Environment name
   environmentName: 'AzureDev'
