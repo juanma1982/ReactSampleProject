@@ -12,16 +12,7 @@ variables:
   azureSubscription: '5b84c180-d7b9-4e06-80be-228bfd175dd1'
 
   # Web app name
-  webAppName: '- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Azure subscription 1 (16965353-1582-470e-974d-799b145833aa)'
-    appType: 'webAppLinux'
-    appName: 'ReactSampleProject'
-    deployToSlotOrASE: true
-    resourceGroupName: 'DemoResourceGroup'
-    slotName: 'production'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    runtimeStack: 'NODE|16-lts''
+  webAppName: 'ReactSampleProject'
 
   # Environment name
   environmentName: 'AzureDev'
@@ -65,16 +56,13 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: AzureRmWebAppDeployment@4
-            displayName: 'Azure App Service Deploy: '
+          - task: AzureWebApp@1
             inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              WebAppName: $(webAppName)
-              packageForLinux: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
-              RuntimeStack: 'NODE|10.10'
-              StartupCommand: 'npm run start'
-              ScriptType: 'Inline Script'
-              InlineScript: |
-                npm install
-                npm run build --if-present
+              azureSubscription: 'Azure subscription 1 (16965353-1582-470e-974d-799b145833aa)'
+              appType: 'webAppLinux'
+              appName: 'ReactSampleProject'
+              deployToSlotOrASE: true
+              resourceGroupName: 'DemoResourceGroup'
+              slotName: 'production'
+              package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+              runtimeStack: 'NODE|16-lts'
