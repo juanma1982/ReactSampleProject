@@ -12,7 +12,16 @@ variables:
   azureSubscription: '5b84c180-d7b9-4e06-80be-228bfd175dd1'
 
   # Web app name
-  webAppName: 'ReactSampleProject'
+  webAppName: '- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1 (16965353-1582-470e-974d-799b145833aa)'
+    appType: 'webAppLinux'
+    appName: 'ReactSampleProject'
+    deployToSlotOrASE: true
+    resourceGroupName: 'DemoResourceGroup'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'NODE|16-lts''
 
   # Environment name
   environmentName: 'AzureDev'
